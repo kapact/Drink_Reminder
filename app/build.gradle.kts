@@ -33,7 +33,8 @@ dependencies {
     implementation(project(Projects.Implementation.Feature.WATER_PRESENTATION))
     implementation(project(Projects.Implementation.Feature.SETTINGS_PRESENTATION))
     
-    // Android Materials
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.material3)
     
     // Dagger - Hilt
