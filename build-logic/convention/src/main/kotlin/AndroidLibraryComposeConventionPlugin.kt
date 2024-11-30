@@ -9,6 +9,7 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("custom.android.library")
+                apply("org.jetbrains.kotlin.plugin.compose")
             }
             
             extensions.configure(LibraryExtension::class.java) {

@@ -9,7 +9,6 @@ internal fun Project.configureKotlinAndroidCompose(
 ) {
     commonExtension.apply {
         buildFeaturesCompose()
-        composeOptions()
     }
 }
 
@@ -17,11 +16,5 @@ fun CommonExtension<*, *, *, *, *, *>.buildFeaturesCompose() {
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-}
-
-fun CommonExtension<*, *, *, *, *, *>.composeOptions() {
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.12"
     }
 }
