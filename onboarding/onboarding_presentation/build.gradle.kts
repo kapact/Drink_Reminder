@@ -20,10 +20,9 @@ dependencies {
     implementation(project(Projects.Implementation.CORE_COMPOSE))
     implementation(project(Projects.Implementation.Feature.ONBOARDING_DOMAIN))
     
-    // Android Materials
-    implementation(libs.androidx.material3)
-    
     // Compose
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.ui.tooling.preview)
     
     // Dagger - Hilt

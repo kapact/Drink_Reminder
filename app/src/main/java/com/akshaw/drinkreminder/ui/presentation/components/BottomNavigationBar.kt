@@ -11,9 +11,11 @@ import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,7 +40,6 @@ import com.akshaw.drinkreminder.navigation.BottomNavRoute
 import com.akshaw.drinkreminder.navigation.Route
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BottomNavigationBar(
     navController: NavHostController,
@@ -64,8 +65,10 @@ fun BottomNavigationBar(
     ) { isVisible ->
         
         if (isVisible)
-            NavigationBar {
-                
+            NavigationBar(
+                modifier = Modifier
+                    .height(IntrinsicSize.Min)
+            ) {
                 screens.forEach {
                     AddNavigationBarItem(
                         screen = it,
@@ -77,7 +80,6 @@ fun BottomNavigationBar(
     
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun RowScope.AddNavigationBarItem(
     screen: BottomNavRoute,
