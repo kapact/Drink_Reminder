@@ -1,6 +1,5 @@
 import com.akshaw.convention.Android
 import com.akshaw.convention.buildFeaturesCompose
-import com.akshaw.convention.composeOptions
 import com.akshaw.convention.configureKotlinAndroid
 import com.android.build.api.dsl.ApplicationExtension
 import org.gradle.api.Plugin
@@ -15,13 +14,13 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
                 apply("kotlin-kapt")
                 apply("com.google.devtools.ksp")
+                apply("org.jetbrains.kotlin.plugin.compose")
             }
             
             extensions.configure(ApplicationExtension::class.java) {
                 configureKotlinAndroid(this)
                 targetSdk()
                 buildFeaturesCompose()
-                composeOptions()
             }
             
         }
