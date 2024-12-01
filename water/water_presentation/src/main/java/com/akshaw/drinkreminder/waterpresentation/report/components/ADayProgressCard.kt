@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -54,13 +55,16 @@ fun ADayProgressCard(
             )
             
             LinearProgressIndicator(
+                progress = { (progress / goal).coerceIn(0.0, 1.0).toFloat() },
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
                     .height(8.dp)
                     .clip(RoundedCornerShape(45.dp)),
-                progress = (progress / goal).coerceIn(0.0, 1.0).toFloat(),
-                trackColor = MaterialTheme.colorScheme.background
+                trackColor = MaterialTheme.colorScheme.background,
+                gapSize = -10.dp,
+                drawStopIndicator = {},
+                strokeCap = StrokeCap.Round
             )
             
             Row(

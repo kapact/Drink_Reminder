@@ -16,7 +16,6 @@ import com.akshaw.drinkreminder.core.R
 import com.akshaw.drinkreminder.corecompose.utils.bounceClick
 import com.akshaw.drinkreminder.waterdomain.utils.ChartType
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChartSelector(
     modifier: Modifier,

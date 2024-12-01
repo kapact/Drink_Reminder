@@ -127,25 +127,27 @@ fun WaterReportChart(
                 
                 Box(
                     modifier = Modifier
-                        .weight(1f)
-                        .align(Alignment.Bottom)
+                        .weight(1f),
+                    contentAlignment = Alignment.BottomCenter
                 ) {
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxHeight(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Bottom
+                    ) {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height((2 * data).dp)
                                 .clip(RoundedCornerShape(12.dp))
                                 .background(MaterialTheme.colorScheme.primary.copy(alpha = .6f))
-                        ) {
+                        ) {}
                         
-                        }
-    
                         @Suppress("SwallowedException")
                         Text(
                             modifier = Modifier
-                                .height(16.dp)
-                                .align(Alignment.CenterHorizontally)
+                                .height(20.dp)
                                 .rotate(when (selectedChart) {
                                     ChartType.WEEK -> 0f
                                     ChartType.YEAR -> -20f
@@ -181,11 +183,11 @@ fun WaterReportChart(
                         )
                     }
                     
+                    // Total percentage complete
                     Text(
                         modifier = Modifier
-                            .align(Alignment.TopCenter)
                             .padding(top = 4.dp)
-                            .offset(y = if (data > 10) (0).dp else (-20).dp),
+                            .offset(y = if (data < 12) -((data * 2) + 16).dp else -((data * 2) - 4).dp),
                         text = data.toString(),
                         fontSize = 12.sp,
                         fontFamily = FontFamily(
@@ -197,7 +199,7 @@ fun WaterReportChart(
                         color = if (data > 10)
                             MaterialTheme.colorScheme.onPrimary
                         else
-                            MaterialTheme.colorScheme.onBackground
+                            MaterialTheme.colorScheme.onBackground,
                     )
                 }
                 

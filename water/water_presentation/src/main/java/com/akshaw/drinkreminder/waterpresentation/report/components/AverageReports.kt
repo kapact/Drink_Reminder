@@ -72,11 +72,13 @@ fun AverageReports(
             
             Box {
                 CircularProgressIndicator(
+                    progress = { (weeklyAverageProgress / goal).toFloat().coerceIn(0f, 1f) },
                     modifier = Modifier
                         .size(64.dp),
-                    progress = (weeklyAverageProgress / goal).toFloat().coerceIn(0f, 1f),
+                    color = MaterialTheme.colorScheme.primary,
                     strokeWidth = 6.dp,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = .6f)
+                    gapSize = 0.dp,
+                    trackColor = MaterialTheme.colorScheme.background,
                 )
                 
                 Text(
