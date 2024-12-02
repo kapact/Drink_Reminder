@@ -1,6 +1,7 @@
 package com.akshaw.drinkreminder.waterpresentation.home
 
 import android.view.SoundEffectConstants
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -136,13 +137,20 @@ fun WaterHomeScreen(
                 )
                 
                 Spacer(modifier = Modifier.height(32.dp))
+                
+                
+                val updateProgress by animateFloatAsState((progress / goal).toFloat(), label = "")
                 LinearProgressIndicator(
-                    progress = (progress / goal).toFloat(),
+                    progress = { updateProgress },
                     modifier = Modifier
                         .padding(horizontal = 36.dp)
                         .fillMaxWidth()
-                        .height(8.dp)
-                        .clip(RoundedCornerShape(45.dp))
+                        .height(10.dp)
+                        .clip(RoundedCornerShape(45.dp)),
+                    drawStopIndicator = {},
+                    gapSize = -Int.MAX_VALUE.dp,
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = .8f),
+                    trackColor = MaterialTheme.colorScheme.primary.copy(alpha = .2f),
                 )
                 
                 Spacer(modifier = Modifier.height(24.dp))

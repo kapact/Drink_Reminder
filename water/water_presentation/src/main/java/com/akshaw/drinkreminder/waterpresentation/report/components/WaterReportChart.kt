@@ -8,11 +8,17 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -26,6 +32,9 @@ import java.time.LocalDate
 import java.time.Year
 import java.time.format.DateTimeFormatter
 import java.util.*
+
+private val days = listOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
+private val months = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
 @Suppress("MagicNumber")
 @Composable
@@ -44,7 +53,6 @@ fun WaterReportChart(
     Column(
         modifier = modifier
     ) {
-        
         Spacer(modifier = Modifier.height(10.dp))
         
         Row(
@@ -120,8 +128,6 @@ fun WaterReportChart(
                 .height(216.dp)
                 .padding(horizontal = 16.dp)
         ) {
-            val days = listOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
-            val months = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
             
             chartData.forEachIndexed { index, data ->
                 
@@ -130,16 +136,26 @@ fun WaterReportChart(
                         .weight(1f),
                     contentAlignment = Alignment.BottomCenter
                 ) {
+                    
+                    val localDensity = LocalDensity.current
+                    val textHeight = 20.dp
+                    var maxGraphHeight by remember { mutableStateOf(0.dp) }
+                    
                     Column(
                         modifier = Modifier
-                            .fillMaxHeight(),
+                            .fillMaxHeight()
+                            .onSizeChanged {
+                                with(localDensity) {
+                                    maxGraphHeight = it.height.toDp() - textHeight
+                                }
+                            },
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Bottom
                     ) {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height((2 * data).dp)
+                                .height((maxGraphHeight.value * data / 100).dp)
                                 .clip(RoundedCornerShape(12.dp))
                                 .background(MaterialTheme.colorScheme.primary.copy(alpha = .6f))
                         ) {}
@@ -147,7 +163,7 @@ fun WaterReportChart(
                         @Suppress("SwallowedException")
                         Text(
                             modifier = Modifier
-                                .height(20.dp)
+                                .height(textHeight)
                                 .rotate(when (selectedChart) {
                                     ChartType.WEEK -> 0f
                                     ChartType.YEAR -> -20f
@@ -213,6 +229,5 @@ fun WaterReportChart(
         
         Spacer(modifier = Modifier.height(16.dp))
     }
-    
     
 }
