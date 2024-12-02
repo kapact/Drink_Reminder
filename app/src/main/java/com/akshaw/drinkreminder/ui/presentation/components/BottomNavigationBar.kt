@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
@@ -29,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.vectorResource
@@ -67,7 +69,8 @@ fun BottomNavigationBar(
         if (isVisible)
             NavigationBar(
                 modifier = Modifier
-                    .height(IntrinsicSize.Min)
+                    .height(IntrinsicSize.Min),
+                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
             ) {
                 screens.forEach {
                     AddNavigationBarItem(

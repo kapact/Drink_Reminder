@@ -1,6 +1,5 @@
 package com.akshaw.drinkreminder.ui.presentation
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -17,7 +16,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.format.DateTimeFormatter
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainScreen(
     currentBottomNavScreen: PagerState,

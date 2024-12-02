@@ -50,7 +50,6 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var preferences: Preferences
     
-    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         

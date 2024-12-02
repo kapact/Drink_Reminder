@@ -79,7 +79,7 @@ private val lightColorScheme = lightColorScheme(
 fun DrinkReminderTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -90,13 +90,14 @@ fun DrinkReminderTheme(
         darkTheme -> darkColorScheme
         else -> lightColorScheme
     }
+    
     val view = LocalView.current
     val currentWindow = (view.context as? Activity)?.window
     if (!view.isInEditMode) {
         SideEffect {
             (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
             currentWindow?.let {
-                WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars = darkTheme
+                WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars = !darkTheme
             }
         }
     }

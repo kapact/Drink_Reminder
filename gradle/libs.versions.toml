@@ -1,6 +1,6 @@
 [versions]
 # Plugin versions
-androidGradlePlugin = "8.7.2"
+androidGradlePlugin = "8.3.2"
 kotlinAndroidPlugin = "2.0.21"   # change ksp compatible verision as well when updating kotlin version
 kspPlugin = "2.0.20-1.0.24"
 hiltAndroidPlugin = "2.52"

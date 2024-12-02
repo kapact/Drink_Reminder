@@ -165,7 +165,8 @@ fun WaterReminderScreen(
                         ExposedDropdownMenuDefaults.TrailingIcon(expanded = isSelectReminderTypeExpanded)
                     },
                     colors = ExposedDropdownMenuDefaults.textFieldColors(
-                        unfocusedIndicatorColor = MaterialTheme.colorScheme.primary
+                        unfocusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.background.copy(alpha = 0.6f)
                     ),
                     textStyle = TextStyle(
                         fontSize = 14.sp
