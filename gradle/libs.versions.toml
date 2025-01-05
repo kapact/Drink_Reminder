@@ -19,7 +19,7 @@ numberPicker = "2.4.13"
 kotlinxSerializationJson = "1.7.3"
 
 # Test
-junitJupiter = "5.10.2"
+junitJupiter = "5.11.4"
 assertk = "0.28.1"
 
 [libraries]
