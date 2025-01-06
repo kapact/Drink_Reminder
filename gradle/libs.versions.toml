@@ -8,7 +8,7 @@ androidJunit5Plugin = "1.10.0.0"
 detektPlugin = "1.23.7"
 
 # Library versions
-composeBom = "2024.11.00"
+composeBom = "2024.12.01"
 androidxNavigationCompose = "2.8.4"
 daggerHiltAndroid = "2.52"
 daggerHiltNavigationCompose = "1.2.0"
