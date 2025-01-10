@@ -10,7 +10,7 @@ detektPlugin = "1.23.7"
 # Library versions
 composeBom = "2024.11.00"
 androidxNavigationCompose = "2.8.4"
-daggerHiltAndroid = "2.52"
+daggerHiltAndroid = "2.55"
 daggerHiltNavigationCompose = "1.2.0"
 androidxRoom = "2.6.1"
 androidxDatastore = "1.1.1"
